@@ -23,4 +23,22 @@
         <url-pattern>/display</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AddCommentServlet</servlet-name>
+        <servlet-class>AddCommentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCommentServlet</servlet-name>
+        <url-pattern>/AddCommentServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetCommentsServlet</servlet-name>
+        <servlet-class>GetCommentsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCommentsServlet</servlet-name>
+        <url-pattern>/GetCommentsServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
