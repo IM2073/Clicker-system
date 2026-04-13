@@ -24,6 +24,51 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>QuestionsServlet</servlet-name>
+        <servlet-class>QuestionsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>QuestionsServlet</servlet-name>
+        <url-pattern>/questions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateQuestionServlet</servlet-name>
+        <servlet-class>CreateQuestionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateQuestionServlet</servlet-name>
+        <url-pattern>/teacher/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TeacherDashboardServlet</servlet-name>
+        <servlet-class>TeacherDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherDashboardServlet</servlet-name>
+        <url-pattern>/teacher</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AddCommentServlet</servlet-name>
         <servlet-class>AddCommentServlet</servlet-class>
     </servlet>

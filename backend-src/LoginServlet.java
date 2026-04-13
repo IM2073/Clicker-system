@@ -37,21 +37,35 @@ public class LoginServlet extends HttpServlet {
 
         Connection conn = null;
         PreparedStatement stmt = null;
+        PreparedStatement updateStmt = null;
         ResultSet rs = null;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
-            String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+            String sql = "SELECT password FROM users WHERE username = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
-            stmt.setString(2, password);
 
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                out.print("LOGIN_OK");
+                String storedPassword = rs.getString("password");
+                String hashedPassword = PasswordUtil.hashPassword(password);
+
+                if (hashedPassword.equals(storedPassword)) {
+                    out.print("LOGIN_OK");
+                } else if (password.equals(storedPassword)) {
+                    updateStmt = conn.prepareStatement(
+                            "UPDATE users SET password = ? WHERE username = ?");
+                    updateStmt.setString(1, hashedPassword);
+                    updateStmt.setString(2, username);
+                    updateStmt.executeUpdate();
+                    out.print("LOGIN_OK");
+                } else {
+                    out.print("LOGIN_FAIL");
+                }
             } else {
                 out.print("LOGIN_FAIL");
             }
@@ -62,6 +76,7 @@ public class LoginServlet extends HttpServlet {
         } finally {
             try { if (rs != null) rs.close(); } catch (Exception e) {}
             try { if (stmt != null) stmt.close(); } catch (Exception e) {}
+            try { if (updateStmt != null) updateStmt.close(); } catch (Exception e) {}
             try { if (conn != null) conn.close(); } catch (Exception e) {}
         }
     }

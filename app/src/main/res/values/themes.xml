@@ -1,9 +1,52 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.ClickerApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/button_text</item>
+        <item name="colorSecondary">@color/primary_dark</item>
+        <item name="android:colorBackground">@color/background_top</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/background_bottom</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.ClickerApp" parent="Base.Theme.ClickerApp" />
+
+    <style name="Widget.ClickerApp.PrimaryButton" parent="Widget.Material3.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/button_text</item>
+    </style>
+
+    <style name="Widget.ClickerApp.SecondaryButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="backgroundTint">@color/button_secondary</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="strokeColor">@color/card_stroke</item>
+    </style>
+
+    <style name="Widget.ClickerApp.NavButton" parent="Widget.ClickerApp.SecondaryButton">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingRight">6dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Widget.ClickerApp.OptionButton" parent="Widget.ClickerApp.PrimaryButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:gravity">center_vertical|start</item>
+        <item name="cornerRadius">18dp</item>
+    </style>
 </resources>

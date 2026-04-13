@@ -57,7 +57,7 @@ public class RegisterServlet extends HttpServlet {
             String insertSql = "INSERT INTO users (username, password) VALUES (?, ?)";
             insertStmt = conn.prepareStatement(insertSql);
             insertStmt.setString(1, username);
-            insertStmt.setString(2, password);
+            insertStmt.setString(2, PasswordUtil.hashPassword(password));
 
             int count = insertStmt.executeUpdate();
 

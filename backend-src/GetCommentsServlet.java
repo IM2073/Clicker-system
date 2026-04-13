@@ -22,6 +22,15 @@ public class GetCommentsServlet extends HttpServlet {
 
         response.setContentType("text/plain; charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String questionIdParam = request.getParameter("questionId");
+
+        int questionId;
+        try {
+            questionId = Integer.parseInt(questionIdParam);
+        } catch (Exception e) {
+            out.println("ERROR: invalid question id");
+            return;
+        }
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -31,8 +40,10 @@ public class GetCommentsServlet extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
-            String sql = "SELECT username, comment_text, created_at FROM comments ORDER BY created_at DESC";
+            String sql = "SELECT username, comment_text, created_at FROM comments " +
+                    "WHERE question_id = ? ORDER BY created_at DESC";
             stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, questionId);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
