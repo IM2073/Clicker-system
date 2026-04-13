@@ -45,7 +45,7 @@ public class TeacherDashboardServlet extends HttpServlet {
         out.println("@media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }");
         out.println("</style></head><body>");
         out.println("<div class='page'>");
-        out.println("<h1>Teacher Question Builder</h1>");
+        out.println("<h1>Teacher's Webpage: Question Creator</h1>");
         out.println("<p>Create new four-option questions for students. Comments and votes will stay attached to the specific question.</p>");
 
         if (status != null && !status.trim().isEmpty()) {
